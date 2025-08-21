@@ -1,0 +1,220 @@
+:root {
+	--bg-color-hover: #252525;
+	--bg-color: #282828;
+	--outline-wdget: #323232;
+	--outline-object: #3c3c3c;
+
+	--bar-size: 42vw;
+	--bar-size-after: 44vw;
+}
+
+:root {
+	--bg-color-hover: #372d23;
+	--bg-color: #282828;
+	--bace-color: #3c3228;
+	--outline-wdget: #463c32;
+	--outline-object: #50463c;
+
+	--bar-size: 42vw;
+	--bar-size-after: 44vw;
+}
+
+a:link {
+	text-decoration: none;
+}
+
+a:visited {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+a:active {
+	text-decoration: none;
+}
+
+html,
+body,
+.menuButton {
+	height: 110vh;
+	width: 100vw;
+	background-color: var(--bg-color);
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.panel {
+	height: 70vh;
+	width: 80vw;
+	background-color: var(--bace-color);
+
+	border-radius: 5vw;
+
+	box-shadow: 0 0 24px -3px rgba(0, 0, 0, 0.7);
+
+	outline-style: solid;
+	outline-color: var(--outline-wdget);
+	outline-width: 2px;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.cont,
+.barCont,
+.textCont,
+.menuCont {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+.menuCont {
+	height: 5vh;
+}
+
+.barCont {
+	flex-direction: column;
+	border-radius: 200vw;
+}
+
+.textCont {
+	width: 100%;
+	height: 50%;
+	background-color: var(--outline-wdget);
+
+	box-shadow: 0 0 14px 0 rgba(15, 15, 15, 0.7);
+
+	border-radius: 2vw;
+	outline-style: solid;
+	outline-width: 2px;
+	outline-color: var(--outline-object);
+
+	transition: all 0.25s
+}
+
+.textCont:hover {
+	width: 105%;
+	height: 60%;
+}
+
+.barcontainer {
+	position: relative;
+	width: var(--bar-size);
+	height: 35px;
+	box-shadow: 0 0 14px 0 rgba(15, 15, 15, 0.7);
+
+	outline-width: 6px;
+	outline-style: solid;
+	outline-color: var(--outline-object);
+
+	border-radius: 100vh;
+
+	transition: all 0.25s
+}
+
+.barcontainer:hover {
+	width: var(--bar-size-after);
+	height: 45px;
+}
+
+.barProgress {
+	transform: rotate(0deg) translateX(-0px);
+	position: absolute;
+	bottom: 0;
+	height: 100%;
+	box-sizing: border-box;
+	transform-origin: middle;
+}
+
+.bar {
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: var(--bar-size) 100%;
+	border-radius: 100vh;
+	box-sizing: border-box;
+	transform-origin: middle;
+
+	animation-name: barAnim;
+	animation-delay: 1s;
+	animation-duration: 2s;
+
+	transition: all 0.25s
+}
+
+.bar:hover {
+	background-size: var(--bar-size-after) 100%;
+}
+
+@keyframes barAnim1 {
+	from {
+		width: 10%;
+	}
+
+	to {
+		width: 100%;
+	}
+}
+
+@keyframes barAnim2 {
+	from {
+		width: 10%;
+	}
+
+	to {
+		width: 100%;
+	}
+}
+
+@keyframes barAnim3 {
+	from {
+		width: 10%;
+	}
+
+	to {
+		width: 100%;
+	}
+}
+
+.infoText,
+.menuButton {
+	text-align: center;
+	font-size: 5vh;
+	color: white;
+	font-family: Trebuchet MS;
+	transition: all 1s;
+}
+
+.menuButton {
+	height: 150%;
+	width: 100%;
+	font-size: 5vh;
+	background-color: var(--bace-color);
+	box-shadow: 16px 0 24px -3px rgba(0, 0, 0, 0.7);
+
+	outline-color: var(--outline-wdget);
+	outline-style: solid;
+	outline-width: 2px;
+
+	border-bottom-left-radius: 3vw;
+	border-bottom-right-radius: 3vw;
+
+	transition: all 0.25s ease-out
+}
+
+.menuButton:hover {
+	height: 210%;
+	width: 105%;
+	font-size: 5.25vh;
+	background-color: var(--bg-color-hover);
+}
