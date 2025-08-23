@@ -57,13 +57,11 @@ def search():
         def calculate_feels_like(temp_c, humidity):
             # Simple heat index formula (Celsius)
             feels_like = temp_c
-            print(temp_c, humidity)
             if temp_c >= 27:
                 feels_like = -8.784695 + 1.61139411 * temp_c + 2.338549 * humidity \
                     - 0.14611605 * temp_c * humidity - 0.012308094 * temp_c ** 2 \
                     - 0.016424828 * humidity ** 2 + 0.002211732 * temp_c ** 2 * humidity \
                     + 0.00072546 * temp_c * humidity ** 2 - 0.000003582 * temp_c ** 2 * humidity ** 2
-            print(feels_like)
             return round(feels_like, 2)
 
         for row in data:
