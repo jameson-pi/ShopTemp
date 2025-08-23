@@ -87,6 +87,8 @@
                         <th>Celsius</th>
                         <th>Pressure</th>
                         <th>Humidity</th>
+                        <th>Dew Point (°F)</th>
+                        <th>Feels Like (°F)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -97,6 +99,8 @@
                         <td>{{ row['Celsius'] }}</td>
                         <td>{{ row['Pressure'] }}</td>
                         <td>{{ row['Humidity'] }}</td>
+                        <td>{{ row['DewPoint'] }}</td>
+                        <td>{{ row['FeelsLike'] }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>

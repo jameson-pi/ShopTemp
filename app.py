@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 import csv
 from datetime import datetime
-
+import math
 app = Flask(__name__)
 
 # Function to filter data from CSV
@@ -46,6 +46,35 @@ def search():
         # Use the correct CSV file name
         file_path = 'trashed-1758328976-CurrentTempLog.csv'
         data = filter_csv_data(file_path, target_datetime)
+        # Calculate dew point and feels like temperature for each row
+        def calculate_dew_point(temp_c, humidity):
+            # Magnus formula
+            a, b = 17.27, 237.7
+            alpha = ((a * temp_c) / (b + temp_c)) + math.log(humidity / 100.0)
+            dew_point = (b * alpha) / (a - alpha)
+            return round(dew_point, 2)
+
+        def calculate_feels_like(temp_c, humidity):
+            # Simple heat index formula (Celsius)
+            feels_like = temp_c
+            print(temp_c, humidity)
+            if temp_c >= 27:
+                feels_like = -8.784695 + 1.61139411 * temp_c + 2.338549 * humidity \
+                    - 0.14611605 * temp_c * humidity - 0.012308094 * temp_c ** 2 \
+                    - 0.016424828 * humidity ** 2 + 0.002211732 * temp_c ** 2 * humidity \
+                    + 0.00072546 * temp_c * humidity ** 2 - 0.000003582 * temp_c ** 2 * humidity ** 2
+            print(feels_like)
+            return round(feels_like, 2)
+
+        for row in data:
+            try:
+                temp_c = float(row["Celsius"])
+                humidity = float(row["Humidity"])
+                row['DewPoint'] = round(calculate_dew_point(temp_c, humidity)*9/5+32,2)
+                row['FeelsLike'] = round(calculate_feels_like(temp_c, humidity)*9/5+32,2)
+            except Exception as e:
+                row['DewPoint'] = e
+                row['FeelsLike'] = 'N/A'
         return render_template('results.html', data=data, target_datetime=target_datetime.strftime('%Y-%m-%d %H:%M:%S'))
     except Exception as e:
         # Generic error handling
