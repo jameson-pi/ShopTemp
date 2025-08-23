@@ -25,7 +25,7 @@ def filter_csv_data(file_path, target_datetime):
                     # Parse timestamp from the 'Timestamp' column
                     row_datetime = datetime.strptime(row['Timestamp'], '%Y-%m-%dT%H:%M:%S.%f')
                     # Compare with target_datetime, ignoring microseconds for the match
-                    if row_datetime.replace(microsecond=0) == target_datetime:
+                    if row_datetime.replace(second=0,microsecond=0) == target_datetime.replace(year=2024,minute=(round(target_datetime.minute/10)*10),second=0,microsecond=0):
                         filtered_data.append(row)
                 except (ValueError, KeyError):
                     # Skip rows with parsing errors or missing 'Timestamp' key
@@ -34,11 +34,11 @@ def filter_csv_data(file_path, target_datetime):
         print(f"Error: The file {file_path} was not found.")
     return filtered_data
 
-@app.route('/')
+@app.route('/search')
 def index():
     return render_template('index.html')
 
-@app.route('/search', methods=['GET'])
+@app.route('/', methods=['GET'])
 def search():
     try:
         # Get the current time and remove microseconds for comparison

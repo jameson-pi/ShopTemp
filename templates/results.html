@@ -83,7 +83,9 @@
                 <thead>
                     <tr>
                         <th>Timestamp</th>
-                        <th>Temperature</th>
+                        <th>Fahrenheit</th>
+                        <th>Celsius</th>
+                        <th>Pressure</th>
                         <th>Humidity</th>
                     </tr>
                 </thead>
@@ -91,7 +93,9 @@
                     {% for row in data %}
                     <tr>
                         <td>{{ row['Timestamp'] }}</td>
-                        <td>{{ row['Temperature'] }}</td>
+                        <td>{{ row['Fahrenheit'] }}</td>
+                        <td>{{ row['Celsius'] }}</td>
+                        <td>{{ row['Pressure'] }}</td>
                         <td>{{ row['Humidity'] }}</td>
                     </tr>
                     {% endfor %}
